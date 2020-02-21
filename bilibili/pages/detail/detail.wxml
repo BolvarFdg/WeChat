@@ -1,0 +1,72 @@
+<view class="main">
+  <!-- 公共头部 -->
+  <MyTitle></MyTitle>
+  <!-- 视频详情 -->
+  <view class="vedio_info">
+    <!-- 视频标签 -->
+    <video src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" controls class="video"></video>
+    <!-- 视频标题 -->
+    <view class="video_title">
+      <text>{{video.describe}}</text>
+      <text class="fa fa-angle-down"></text>
+    </view>
+    <!-- 视频作者... -->
+    <view class="video_detail">
+      <!-- 作者 -->
+      <text class="author">{{video.author}}</text>
+      <!-- 播放量 -->
+      <text class="play_count">{{video.playCount}}</text>
+      <!-- 评论量 -->
+      <text class="comment_count">{{video.commentCount}}弹幕</text>
+      <!-- 时间 -->
+      <text class="date">{{video.date}}</text>
+    </view>
+  </view>
+  <!-- 推荐视频 -->
+  <view class="other_list">
+    <navigator url="../detail/detail?id={{item.id}}" class="item_other" wx:for="{{othersList}}" wx:key="{{index}}">
+      <!-- 图片容器 -->
+      <view class="other_img_wrap">
+        <image src="{{item.imgSrc}}" mode="widthFix" />
+      </view>
+      <!-- 视频详情 -->
+      <view class="video_info">
+        <!-- 标题 -->
+        <view class="other_title">{{item.title}}</view>
+        <!-- 播放信息 -->
+        <view class="other_detail">
+          <!-- 播放量 -->
+          <text class="play_count">{{item.playMsg}}次观看</text>
+          <!-- 评论量 -->
+          <text class="comment_count">{{item.commentCount}}弹幕</text>
+        </view>
+      </view>
+    </navigator>
+  </view>
+  <!-- 评论列表 -->
+  <view class="comment_wrap">
+    <!-- 评论总数 -->
+    <view class="comment_title">评论（{{commentData.commentTotalCount}}）</view>
+    <!-- 评论详情 -->
+    <view class="comment_list">
+      <view class="comment_item" wx:for="{{commentData.commentList}}" wx:key="{{index}}">
+        <!-- 左侧头像 -->
+        <view class="comment_user">
+          <image src="{{item.userIconSrc}}" mode="widthFix" />
+        </view>
+        <!-- 右侧文字 -->
+        <view class="comment_info">
+          <!-- 评论信息 -->
+          <view class="commnet_detail">
+            <!-- 作者 -->
+            <!-- 日期 -->
+            <text class="author">{{item.username}}</text>
+            <text class="date">{{item.commentDate}}</text>
+          </view>
+          <!-- 评论内容 -->
+          <view class="comment_content">{{item.commentInfo}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
